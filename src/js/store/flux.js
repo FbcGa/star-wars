@@ -1,45 +1,47 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			urlApi: `https://swapi.dev/api/people`,
+			characters: [],
+			//singleCharacter: [],
+			planets: [],
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			getCharacters: async () => {
+				try {
+					const { urlApi } = getStore();
+					const response = await fetch(urlApi, {
+						method: "GET"
+					});
+					if (!response.ok) {
+						throw Error("error obtenindo personajes")
+					}
+					const data = await response.json();
+					setStore({ characters: data.results })
+				} catch (error) {
+					console.log(error);
+				}
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			singleCharacter: async (id) => {
+				try {
+					const { urlApi } = getStore();
+					const response = await fetch(urlApi, {
+						method: "GET"
+					});
+					if (!response.ok) {
+						throw Error("error al obtener un solo personaje")
+					}
+					const data = await response.json();
+					return data.results;
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		}
-	};
+	}
 };
+
 
 export default getState;

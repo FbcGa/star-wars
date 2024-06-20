@@ -1,0 +1,18 @@
+#app{
+    background: #18191A;
+}
+
+.card{
+    background:#242526;
+}
+section{
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(
+            300px,
+            1fr
+        )
+    );
+    gap: 1rem;
+}

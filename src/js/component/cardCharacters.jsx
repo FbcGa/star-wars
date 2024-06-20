@@ -1,0 +1,20 @@
+import React from 'react'
+import "../../styles/card.css"
+import { Link } from 'react-router-dom'
+
+export const CardCharacters = ({ character, index }) => {
+
+    return (
+        <div className="card text-white" style={{ width: "18rem" }}>
+            <img src={"https://starwars-visualguide.com/assets/img/characters/" + (character.url.split("/")[5]) + ".jpg"} className="card-img-top" alt="..." />
+            <div className="card-body">
+                <h5 className="card-title">{character.name}</h5>
+                <div className='d-flex align-items-center justify-content-between'>
+                    <Link to={`/character/${character.uid}`} ><button className="btn btn-primary">Learn more</button> </Link>
+                    <button className="btn btn-dark btn-lg invisible"><i className="far fa-heart visible"></i></button>
+                </div>
+
+            </div>
+        </div>
+    )
+}
