@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import { CardPlanet } from "../component/cardPlanet.jsx";
 
 export const Home = () => {
-    const { store, actions } = useContext(Context);
+    const { store } = useContext(Context);
+
+
     return (
         <div className="bg-black">
             <h1 className="text-center text-white mb-3">Star Wars</h1>
