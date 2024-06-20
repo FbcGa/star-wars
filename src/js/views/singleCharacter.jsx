@@ -4,16 +4,9 @@ import { Context } from '../store/appContext';
 
 export const SingleCharacter = () => {
     const params = useParams();
-    const { actions } = useContext(Context);
-    const [character, setCharacter] = useState({});
-
-    const singleCaracter = async () => {
-        const data = await actions.singleCharacter(params.id);
-        setCharacter(data)
-    }
-    useEffect(() => {
-        singleCaracter();
-    }, [])
+    const { store, actions } = useContext(Context);
+    console.log(store.details);
+    const character = store.details;
 
     return (
 

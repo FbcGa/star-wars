@@ -1,4 +1,4 @@
-.card:hover{
+button:hover{
     scale: 1.3;
     z-index: 1;
 }

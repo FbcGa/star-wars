@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
+import { NavBar } from "./component/navBar.jsx";
 import { Home } from "./views/home.jsx";
 import injectContext from "./store/appContext";
 import { SingleCharacter } from "./views/singleCharacter.jsx";
@@ -16,6 +16,7 @@ const Layout = () => {
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
+					<NavBar />
 					<Routes>
 
 						<Route path="/" element={<Home />} />

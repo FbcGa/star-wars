@@ -2,10 +2,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			urlApi: `https://swapi.dev/api/people`,
+			urlPlanet: `https://swapi.dev/api/planets`,
 			characters: [],
-			//singleCharacter: [],
+			details: [],
 			planets: [],
-
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -24,21 +25,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
-			singleCharacter: async (id) => {
+			getDetails: (element) => {
+				const store = getStore();
+				if (element.url.split("/")[4] === "people") {
+					store.characters.find((character) => character.url == element.url);
+					setStore({ details: element })
+				}
+			},
+			getPlanets: async () => {
 				try {
-					const { urlApi } = getStore();
-					const response = await fetch(urlApi, {
+					const { urlPlanet } = getStore();
+					const response = await fetch(urlPlanet, {
 						method: "GET"
 					});
 					if (!response.ok) {
-						throw Error("error al obtener un solo personaje")
+						throw Error("error obteniendo planetas")
 					}
 					const data = await response.json();
-					return data.results;
+					setStore({ planets: data.results })
 				} catch (error) {
 					console.log(error);
 				}
+			},
+			addFavorites: (element) => {
+				const { favorites } = getStore();
+				const newValor = favorites.filter((favorite) =>
+					favorite.name != element.name
+				);
+				setStore({ favorites: [...newValor, element] })
+				console.log(favorites);
 			}
+
 		}
 	}
 };

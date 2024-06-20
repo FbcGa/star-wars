@@ -1,18 +1,24 @@
-#app{
+/*#app{
     background: #18191A;
-}
+    background-size: cover;
+}*/
 
 .card{
     background:#242526;
 }
-section{
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(
-            300px,
-            1fr
-        )
-    );
-    gap: 1rem;
+*::-webkit-scrollbar {
+    width: 12px;            
 }
+  
+*::-webkit-scrollbar-track {
+background: rgba(255, 255, 0, 0.301) ;
+box-shadow: 0 0 10px yellow      
+}
+  
+*::-webkit-scrollbar-thumb {
+background-color: rgb(255, 255, 0);  
+border-radius: 20px;      
+border: 1px solid rgb(255, 255, 89) ;  
+}
+
+
