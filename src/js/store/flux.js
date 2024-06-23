@@ -1,3 +1,5 @@
+import { element } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -6,7 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			details: [],
 			planets: [],
-			favorites: []
+			favorites: [],
+			buttonFav: true,
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -53,9 +56,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					favorite.name != element.name
 				);
 				setStore({ favorites: [...newValor, element] })
-				console.log(favorites);
+			},
+			deleteFavorites: (element) => {
+				const { favorites, buttonFav } = getStore();
+				const newValor = favorites.filter((favorite) =>
+					favorite.name != element.name
+				);
+				setStore({ favorites: [...newValor] });
 			}
-
 		}
 	}
 };

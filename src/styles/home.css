@@ -1,24 +1,24 @@
-/*#app{
-    background: #18191A;
-    background-size: cover;
-}*/
+body{
+    background-image: url('https://cdn.wallpapersafari.com/1/97/co341S.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 
 .card{
-    background:#242526;
+    background:#101820;
 }
 *::-webkit-scrollbar {
-    width: 12px;            
+    width: 12px;
 }
-  
+
 *::-webkit-scrollbar-track {
-background: rgba(255, 255, 0, 0.301) ;
-box-shadow: 0 0 10px yellow      
+    background: rgba(30, 30, 30, 0.8); /* Fondo gris muy oscuro */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); /* Sombra cian sutil */
 }
-  
+
 *::-webkit-scrollbar-thumb {
-background-color: rgb(255, 255, 0);  
-border-radius: 20px;      
-border: 1px solid rgb(255, 255, 89) ;  
+    background-color: rgb(0, 150, 200); /* Color cian oscuro */
+    border-radius: 20px;
+    border: 1px solid rgb(0, 100, 150); /* Borde cian más oscuro */
 }
-
-
