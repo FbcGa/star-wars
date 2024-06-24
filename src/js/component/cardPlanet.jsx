@@ -3,7 +3,7 @@ import "../../styles/card.css"
 import { Link } from 'react-router-dom'
 import { Context } from '../store/appContext'
 
-export const CardPlanet = ({ planet }, { index }) => {
+export const CardPlanet = ({ planet }) => {
     const uid = planet.url.split("/")[5];
 
     const { store, actions } = useContext(Context);
@@ -24,7 +24,7 @@ export const CardPlanet = ({ planet }, { index }) => {
             <div className="card-body">
                 <h5 className="card-title">{planet.name}</h5>
                 <div className='d-flex align-items-center justify-content-between'>
-                    <Link to={`/character/${uid}`} ><button className="btn btn-primary" onClick={() => handleClik(planet)}>Learn more</button> </Link>
+                    <Link to={`/planet/${uid}`} ><button className="btn btn-primary" onClick={() => handleClik(planet)}>Learn more</button> </Link>
                     <button className={`btn ${getFavoriteButtonClass(planet.name)} btn-lg`}
                         onClick={() => addFavorite(planet)}><i className="far fa-heart"></i></button>
                 </div>

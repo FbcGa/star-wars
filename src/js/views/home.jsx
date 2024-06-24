@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import { CardCharacters } from "../component/cardCharacters.jsx";
-import { Link } from "react-router-dom";
 import { CardPlanet } from "../component/cardPlanet.jsx";
 
 export const Home = () => {
@@ -38,7 +37,6 @@ export const Home = () => {
                             return (
                                 <CardPlanet key={index}
                                     planet={planet}
-                                    index={index}
                                 />
                             )
 

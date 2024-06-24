@@ -34,6 +34,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					store.characters.find((character) => character.url == element.url);
 					setStore({ details: element })
 				}
+				if (element.url.split("/")[4] === "planets") {
+					store.planets.find((planet) => planet.url == element.url);
+					setStore({ details: element })
+				}
+				console.log(store.details);
 			},
 			getPlanets: async () => {
 				try {
@@ -50,6 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
+
 			addFavorites: (element) => {
 				const { favorites } = getStore();
 				const newValor = favorites.filter((favorite) =>

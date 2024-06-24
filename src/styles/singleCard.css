@@ -1,0 +1,29 @@
+.single-character-container {
+    background: linear-gradient(135deg, #000428, #004e92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-details-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-details-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.character-image {
+    width: 18rem;
+    transition: transform 0.3s ease;
+}
+
+.character-info {
+    color: #f8f9fa;
+}
+
+.character-attributes p {
+    margin: 0.2rem 0;
+    font-size: 1.2rem;
+}

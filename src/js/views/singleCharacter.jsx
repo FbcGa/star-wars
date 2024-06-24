@@ -1,26 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Context } from '../store/appContext';
-
+import "../../styles/singleCard.css"
 export const SingleCharacter = () => {
     const params = useParams();
-    const { store, actions } = useContext(Context);
-    console.log(store.details);
+    const { store } = useContext(Context);
     const character = store.details;
 
     return (
-
         <div className='d-grid vh-100'>
-            <div className='d-flex text-white m-auto bg-dark' style={{ width: "70%" }}>
-                <img src={`https://starwars-visualguide.com/assets/img/characters/${params.id}.jpg`} className="card-img-top" style={{ width: "18rem" }} alt="..." />
-                <div className='d-flex flex-column mx-5'>
-                    <h1>{character.name} </h1>
-                    <span>birth_year: {character.birth_year} </span>
-                    <span>eye_color: {character.eye_color} </span>
-                    <span>hair_color: {character.hair_color} </span>
-                    <span>height: {character.height} </span>
+            <div className="character-details-card d-flex text-white m-auto bg-dark shadow-lg p-3 rounded">
+                <img
+                    src={`https://starwars-visualguide.com/assets/img/characters/${params.id}.jpg`}
+                    className="character-image card-img-top rounded"
+                    alt={character.name}
+                />
+                <div className="character-info d-flex flex-column mx-5">
+                    <h1 className="display-4">{character.name}</h1>
+                    <div className="character-attributes mt-3">
+                        <p><strong>Birth Year:</strong> {character.birth_year}</p>
+                        <p><strong>Eye Color:</strong> {character.eye_color}</p>
+                        <p><strong>Hair Color:</strong> {character.hair_color}</p>
+                        <p><strong>Height:</strong> {character.height}</p>
+                    </div>
                 </div>
             </div>
         </div>
+
     )
 }
