@@ -18,23 +18,27 @@ export const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item dropstart">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Favoritos
-                            </a>
+                            <span className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Favorites <span className='text-danger'>{store.favorites.length}</span>
+                            </span>
                             <ul className="dropdown-menu">
                                 {
-                                    store.favorites.map((element, index) => {
-                                        return (
-                                            <div key={index} className='d-flex m-0 p-2 align-items-center justify-content-between'>
-                                                <li>{element.name} </li>
-                                                <button className='btn btn-danger align-items-end' onClick={() => deleteFav(element)}>
-                                                    <i className="fas fa-trash"></i>
-                                                </button>
-                                            </div>
+                                    store.favorites.length == 0 ? (<span className='d-grid text-center text-danger'>No favorites yet!</span>) :
+                                        (
+                                            store.favorites.map((element, index) => {
+                                                return (
+                                                    <div key={index} className='d-flex m-0 p-2 align-items-center justify-content-between'>
+                                                        <li>{element.name} </li>
+                                                        <button className='btn btn-danger align-items-end' onClick={() => deleteFav(element)}>
+                                                            <i className="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
 
+                                                )
+
+                                            })
                                         )
 
-                                    })
                                 }
                             </ul>
                         </li>

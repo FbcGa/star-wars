@@ -6,7 +6,6 @@ import { Context } from '../store/appContext';
 export const CardCharacters = ({ character }) => {
     const uid = character.url.split("/")[5];
     const { store, actions } = useContext(Context);
-    const [clicked, setClicked] = useState(false);
 
     const handleClik = (character) => {
         actions.getDetails(character);
@@ -14,7 +13,9 @@ export const CardCharacters = ({ character }) => {
 
     const addFavorite = (character) => {
         actions.addFavorites(character);
-        setClicked(!clicked);
+    }
+    const getFavoriteButtonClass = (name) => {
+        return store.favorites.some((e) => e.name === name) ? 'btn-danger' : 'btn-dark';
 
     }
 
@@ -26,7 +27,7 @@ export const CardCharacters = ({ character }) => {
                 <div className='d-flex align-items-center justify-content-between'>
                     <Link to={`/character/${uid}`} ><button className="btn btn-primary" onClick={() => handleClik(character)}>Learn more</button> </Link>
                     <button
-                        className={`btn ${clicked ? 'btn-danger' : 'btn-dark'} btn-lg`}
+                        className={`btn ${getFavoriteButtonClass(character.name)} btn-lg`}
                         onClick={() => addFavorite(character)}
                     >
                         <i className="far fa-heart"></i>
